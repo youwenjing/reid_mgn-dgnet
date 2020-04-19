@@ -1,0 +1,6 @@
+pytorch4                                             400/400+re_rank+trihardloss
+pytorch11                                           400+re_rank+trihardloss+centerloss
+pytorch25                                           400+re_rank+msmlloss
+pytorch29                                           400+1-2-4
+pytorch30                                           400+1-3-4
+MGN-pytorch-master                         注释
