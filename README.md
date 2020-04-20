@@ -3,8 +3,11 @@
 关于本实验的参考资料如下：
 
 MGN论文：https://arxiv.org/abs/1804.01438v1
+
 MGN github：https://github.com/seathiefwang/MGN-pytorch
+
 DG-Net论文：https://arxiv.org/abs/1904.07223
+
 DG-Net github：https://github.com/NVlabs/DG-Net#news
 
 本实验使用以上两种算法为研究基础，在复现论文结果的基础上进行部分改进。原理部分请查阅论文，这里仅对实验平台的搭建及过程进行讲解。由于疫情期间，刚开始研究的时候没有连上学校实验室的服务器，所以使用了kaggle notebook平台，kaggle notebook平台可以完成代码的修改及中小模型的训练。在无法使用服务训练时，是调整代码、训练中小模型的一个较好替代。以下简单介绍下kaggle的深度学习平台及简单的使用方法。
@@ -65,6 +68,7 @@ https://www.kaggle.com/docs/kernels
 
 由以上介绍，**kaggle使用GPU的时间有限，一周只有30小时的总使用时间并且单个会话限制9小时**。所以对于GAN等生成模型或者较大的网络而言（50层级以上），训练时间难以满足。使用服务器搭建平台训练网络无疑的更优。
 
+
 ### 服务器连接步骤
 
 以下为首次使用服务器的小伙伴进行介绍。
@@ -85,38 +89,38 @@ https://www.kaggle.com/docs/kernels
 
      与putty的连接方法类似，创建会话后输入正确的用户名和密码即可。
 
-   ### 环境搭建
+### 环境搭建
 
-   1. 登录完成后，需要切换到自己的用户文件夹下进行配置。
+1. 登录完成后，需要切换到自己的用户文件夹下进行配置。
 
       ```python
       cd /home/XXX
       ```
 
-   2. 推荐使用**Anaconda**为多环境配置，设置多个虚拟环境运行，减少版本冲突的影响。
+2. 推荐使用**Anaconda**为多环境配置，设置多个虚拟环境运行，减少版本冲突的影响。
 
-   3. 创建新的虚拟环境并激活，这里使用Anaconda3，python3.6的环境
+3. 创建新的虚拟环境并激活，这里使用Anaconda3，python3.6的环境
 
       ```shell
       conda create -n XXX python=3.6
       conda activate XXX
       ```
 
-   4. 增加新的安装包，可以使用pip conda两种方法
+4. 增加新的安装包，可以使用pip conda两种方法
 
       ```shell
       pip install numpy
       conda install numpy
       ```
 
-   5. 安装pytorch和tensorflow
+5. 安装pytorch和tensorflow
 
       ```shell
       conda install pytorch==1.0.0 torchvision==0.2.1
       conda install tensorflow-gpu=1.1
       ```
 
-   6. 使用GPU进行深度学习时，为了避免与他人同时使用一个GPU导致训练效率过低，可时刻查看显卡使用情况
+6. 使用GPU进行深度学习时，为了避免与他人同时使用一个GPU导致训练效率过低，可时刻查看显卡使用情况
 
       ```shell
       watch -n 1 nvidia-smi
@@ -126,7 +130,7 @@ https://www.kaggle.com/docs/kernels
       os.environ["CUDA_VISIBLE_DEVICES"] = "0"
       ```
 
-   7. 若挂载的VPN时常断连导致训练中断，可在指令前加nohup，后加&来使用后台进行训练
+7. 若挂载的VPN时常断连导致训练中断，可在指令前加nohup，后加&来使用后台进行训练
 
       ```shell
       nohup  训练指令 > train.log & 
